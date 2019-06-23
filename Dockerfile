@@ -1,5 +1,7 @@
 FROM node:7
-COPY . /src
-RUN cd /src && npm install
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+COPY . /app
+CMD ["node", "app.js"]
 EXPOSE 8000
-CMD ["node", "/src/app.js"]
