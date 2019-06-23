@@ -38,11 +38,17 @@ pipeline {
       steps {
          sh './deploy2Dev.sh'
       }
-    }     
+    }  
+    stage('Notify Team')
+     {
+      steps {
+         echo 'Send Mail to Stackholders'
+      }
+    }   
   }
   post {
     always {
-        emailext body: 'Hi Team,Node-Hello-App CI-Master Build is completed', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Build Status : Node-Hello-App CI-Master Build'
+        emailext body: 'Hi Team,Node-Hello-App CI-Master Build is completed :${BUILD_NUMBER}', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Build Status : Node-Hello-App CI-Master Build'
     }
 }
   }
