@@ -39,12 +39,7 @@ pipeline {
          sh './deploy2Dev.sh'
       }
     }  
-    stage('Notify Team')
-     {
-      steps {
-         echo 'Send Mail to Stackholders'
-      }
-    }   
+      
   }
   post {
     always {
