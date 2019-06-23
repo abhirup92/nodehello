@@ -1,0 +1,45 @@
+pipeline {
+  agent any
+    
+  tools {nodejs "node"}
+    
+  stages {
+        
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/saikatdas/node-hello.git/'
+      }
+    }
+        
+    stage('Install dependencies') {
+      steps {
+        sh 'npm install'
+      }
+    }
+
+    stage('Sonar Code Quality') {
+      steps {
+         echo 'Sonar'
+      }
+    }
+     
+    stage('Create Bundle and upload to S3')
+     {
+      steps {
+         sh './uploadtos3.sh'
+      }
+    } 
+     stage('Create Unique Application Version')
+     {
+      steps {
+         sh './appver.sh'
+      }
+    } 
+     stage('Deploy to Dev Env')
+     {
+      steps {
+         sh './deploy2Dev.sh'
+      }
+    }     
+  }
+  }
