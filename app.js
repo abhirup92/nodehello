@@ -6,7 +6,8 @@ const port = 8000;
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World- Vivek Devan\n');
+  //res.end('Hello World- Vivek Devan\n');
+  res.end(data-items.json);
 });
 
 server.listen(port, hostname, () => {
