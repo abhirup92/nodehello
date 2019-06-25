@@ -6,7 +6,7 @@ const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
 
-  res.end('Hello World- DevOps World Sir ji!\n');
+  res.end('Hello World- Tuesday!\n');
 
 
 });
